@@ -18,7 +18,7 @@ services:
   frappe:
     image: frappe/bench:v5.25.11
     volumes:
-      - .:/workspace
+      - frappen1:/workspace
     command: bash /workspace/init.sh
     environment:
       - SHELL=/bin/bash
@@ -27,4 +27,5 @@ services:
       - 8001:8000
       - 9000:9000 
 
-
+volumes:
+  frappen1:
