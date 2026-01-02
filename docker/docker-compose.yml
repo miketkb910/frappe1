@@ -1,4 +1,5 @@
-version: "3.8" # Updated version
+version: "3.8"
+
 services:
   mariadb:
     image: mariadb:10.8
@@ -8,24 +9,25 @@ services:
       - --skip-character-set-client-handshake
       - --skip-innodb-read-only-compressed # Temporary fix for MariaDB 10.6
     environment:
-      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_ROOT_PASSWORD: root
     volumes:
-      - maridb_data:/var/lib/mysql
+      - mariadb-d:/var/lib/mysql
 
   redis:
     image: redis:alpine
 
   frappe:
-    image: frappe/bench:v5.25.11
+    image: frappe/bench:latest
     command: bash /workspace/init.sh
-    environment:
-      - SHELL=/bin/bash
     working_dir: /home/frappe
+    environment:
+      SHELL: /bin/bash
     volumes:
       - .:/workspace
     ports:
-      - 8001:8000
-      - 9000:9000 
+      - "8000:8000"
+      - "9000:9000"
 
 volumes:
-  maridb_data:
+  mariadb-d:
+
