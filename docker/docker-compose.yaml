@@ -22,7 +22,7 @@ services:
       - SHELL=/bin/bash
     working_dir: /home/frappe
     volumes:
-      - .:/workspace
+      - /root/fr1/frappe1/docker:/workspace
     ports:
       - 8001:8000
       - 9000:9000 
