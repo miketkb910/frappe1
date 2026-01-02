@@ -19,7 +19,7 @@ services:
     image: frappe/bench:v5.25.11
     volumes:
       - .:/workspace
-    # command: bash /workspace/init.sh
+    command: bash /workspace/init.sh
     environment:
       - SHELL=/bin/bash
     working_dir: /home/frappe
