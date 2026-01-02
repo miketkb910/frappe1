@@ -10,7 +10,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123
     volumes:
-      - /root/fr1/volumes:/var/lib/mysql
+      - maridb_data1:/var/lib/mysql
 
   redis:
     image: redis:alpine
@@ -27,4 +27,5 @@ services:
       - 8001:8000
       - 9000:9000 
 
-
+volumes:
+  maridb_data1:
