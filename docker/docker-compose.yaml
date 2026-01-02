@@ -10,21 +10,22 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123
     volumes:
-      - /root/fr1/volumes:/var/lib/mysql
+      - maridb_data:/var/lib/mysql
 
   redis:
     image: redis:alpine
 
   frappe:
     image: frappe/bench:v5.25.11
-    volumes:
-      - .:/workspace
     command: bash /workspace/init.sh
     environment:
       - SHELL=/bin/bash
     working_dir: /home/frappe
+    volumes:
+      - .:/workspace
     ports:
       - 8001:8000
       - 9000:9000 
 
-
+volumes:
+  maridb_data:
